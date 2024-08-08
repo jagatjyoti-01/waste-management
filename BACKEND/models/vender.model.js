@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const vendorSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -18,14 +18,9 @@ const userSchema = new mongoose.Schema({
     profilePicture: {
         type: String,
         default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-    },
-    role: {
-        type: String,
-        enum: ['user', 'vendor'],
-        default: 'user',  // Default role
     }
 }, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
+const Vendor = mongoose.model('Vendor', vendorSchema);
 
-export default User;
+export default Vendor;
