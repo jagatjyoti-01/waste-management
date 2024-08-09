@@ -83,47 +83,45 @@ const handleAuthActions = async (req, res, next, model, action) => {
 };
 
 const handleProductActions = async (req, res, next, action) => {
-    handleFileUpload(req, res, async () => {
-        try {
-            if (action === 'create') {
-                const { name, description, price, category, stock } = req.body;
-                const imageFilename = req.file ? req.file.filename : null;
+    try {
+        if (action === 'create') {
+            const { name, description, price, category, stock } = req.body;
+            const imageFilename = req.file ? req.file.filename : null;
 
-                const product = new Product({ name, description, price, category, stock, imageFilename });
-                await product.save();
-                res.status(201).json({ success: true, product });
-            } else if (action === 'getAll') {
-                const products = await Product.find();
-                res.status(200).json({ success: true, products });
-            } else if (action === 'getById') {
-                const product = await Product.findById(req.params.id);
-                if (!product) {
-                    return res.status(404).json({ success: false, message: "Product not found" });
-                }
-                res.status(200).json({ success: true, product });
-            } else if (action === 'update') {
-                const { name, description, price, category, stock } = req.body;
-                const imageFilename = req.file ? req.file.filename : null;
-
-                const updateData = { name, description, price, category, stock };
-                if (imageFilename) {
-                    updateData.imageFilename = imageFilename;
-                }
-
-                const product = await Product.findByIdAndUpdate(req.params.id, updateData, { new: true });
-                if (!product) {
-                    return res.status(404).json({ success: false, message: "Product not found" });
-                }
-                res.status(200).json({ success: true, product });
-            } else if (action === 'delete') {
-                const product = await Product.findByIdAndDelete(req.params.id);
-                if (!product) {
-                    return res.status(404).json({ success: false, message: "Product not found" });
-                }
-                res.status(200).json({ success: true, message: "Product deleted successfully" });
+            const product = new Product({ name, description, price, category, stock, imageFilename });
+            await product.save();
+            res.status(201).json({ success: true, product });
+        } else if (action === 'getAll') {
+            const products = await Product.find();
+            res.status(200).json({ success: true, products });
+        } else if (action === 'getById') {
+            const product = await Product.findById(req.params.id);
+            if (!product) {
+                return res.status(404).json({ success: false, message: "Product not found" });
             }
-        } catch (err) {
-            next(err);
+            res.status(200).json({ success: true, product });
+        } else if (action === 'update') {
+            const { name, description, price, category, stock } = req.body;
+            const imageFilename = req.file ? req.file.filename : null;
+
+            const updateData = { name, description, price, category, stock };
+            if (imageFilename) {
+                updateData.imageFilename = imageFilename;
+            }
+
+            const product = await Product.findByIdAndUpdate(req.params.id, updateData, { new: true });
+            if (!product) {
+                return res.status(404).json({ success: false, message: "Product not found" });
+            }
+            res.status(200).json({ success: true, product });
+        } else if (action === 'delete') {
+            const product = await Product.findByIdAndDelete(req.params.id);
+            if (!product) {
+                return res.status(404).json({ success: false, message: "Product not found" });
+            }
+            res.status(200).json({ success: true, message: "Product deleted successfully" });
         }
-    });
+    } catch (err) {
+        next(err);
+    }
 };
