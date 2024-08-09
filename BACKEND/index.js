@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import UserRoutes from '../BACKEND/routes/user.route.js';
 import AuthRoute from './routes/auth.route.js';
+import ProductRoute from './routes/product.route.js';
+
+
+
 const app = express();
 dotenv.config();
 app.use(express.json());
@@ -22,6 +26,7 @@ mongoose.connect(process.env.MONGO_DB_URL)
 
 app.use('/api/user', UserRoutes);
 app.use('/api/auth',AuthRoute);
+app.use('/api/products', ProductRoute); // Use the product routes
 app.use((err,req,res,next) =>{
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';
