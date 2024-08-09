@@ -1,43 +1,40 @@
-import express from 'express'
-import mongoose from 'mongoose';
+import express from 'express';
+// import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import UserRoutes from '../BACKEND/routes/user.route.js';
+import UserRoutes from './routes/user.route.js'; // Fixed path
 import AuthRoute from './routes/auth.route.js';
 import ProductRoute from './routes/product.route.js';
-
-
+import connectDB from "./config/db.config.js";
 
 const app = express();
 dotenv.config();
 app.use(express.json());
+
+// mongoose.connect(process.env.MONGO_DB_URL)
+//   .then(() => {
+//     console.log('Connected to MongoDB');
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 console.log(process.env.MONGO_DB_URL);
-mongoose.connect(process.env.MONGO_DB_URL)
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
-  app.listen(3000, () => {
-    console.log('Server is Running on Port 3000');
-  });
-
-
+connectDB();
 app.use('/api/user', UserRoutes);
-app.use('/api/auth',AuthRoute);
+app.use('/api/auth', AuthRoute);
 app.use('/api/products', ProductRoute); // Use the product routes
-app.use((err,req,res,next) =>{
+
+app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';
   res.status(statusCode).json({
-      success:false,
-      statusCode,
-      message
-  })
+    success: false,
+    statusCode,
+    message
+  });
+});
 
-})
-
-// app.get('/test',(req,res) =>{
-//   res.json({message:"API is Working !!"})
-// })
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Server is Running on Port ", PORT);
+});
