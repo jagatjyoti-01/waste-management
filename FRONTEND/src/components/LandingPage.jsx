@@ -30,14 +30,7 @@ function LandingPage() {
             <button className="border-4 sm:ms-20  ms-28 sm:mt-8 bg-[#28735A] sm:px-6 md:px-[90px] rounded-xl text-xs sm:text-2xl text-white p-2 sm:py-6">
               {buttons[currentIndex]}
             </button>
-            {/* <div className="mt-4">
-              {buttons.map((_, index) => (
-                <span
-                  key={index}
-                  className={`inline-block w-3 h-3 rounded-full mr-2 ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
-                ></span>
-              ))}
-            </div> */}
+            
           </div>
           <div className="sm:w-1/2 hidden md:flex  ">
             {images[currentIndex]}
