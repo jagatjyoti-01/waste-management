@@ -1,7 +1,6 @@
 import express from 'express';
-// import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import UserRoutes from './routes/user.route.js'; // Fixed path
+import UserRoutes from './routes/user.route.js';
 import AuthRoute from './routes/auth.route.js';
 import ProductRoute from './routes/product.route.js';
 import connectDB from "./config/db.config.js";
@@ -11,20 +10,11 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // For parsing URL-encoded bodies
 
-
-// mongoose.connect(process.env.MONGO_DB_URL)
-//   .then(() => {
-//     console.log('Connected to MongoDB');
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-console.log(process.env.MONGO_DB_URL);
-
 connectDB();
+
 app.use('/api/user', UserRoutes);
 app.use('/api/auth', AuthRoute);
-app.use('/api/products', ProductRoute); // Use the product routes
+app.use('/api/products', ProductRoute);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -40,7 +30,6 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
