@@ -1,4 +1,3 @@
-import './index.css';
 import SignIn from "./pages/Signin"
 import SignUp from "./pages/Signup"
 import HomePage from "./pages/HomePage";
@@ -16,7 +15,7 @@ import Gallery from "./components/Gallery";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import Footer from "./pages/Footer";
-// import './App.css'
+import './App.css'
 import { BrowserRouter,Route, Routes } from "react-router-dom"
 
 function App() {
@@ -24,8 +23,8 @@ function App() {
 
   return (
     <>
-    
       <BrowserRouter>
+      
         <Routes>
           <Route path="/signin" element={<SignIn />} /> 
           <Route path="/signup" element={<SignUp />} />
@@ -38,12 +37,13 @@ function App() {
           <Route path="/whysell" element={<WhySell />} />
           <Route path="/features" element={<Features />} />
           <Route path="/whatsell" element={<WhatSell />} />
-          <Route path="/imapact" element={<Impact />} />
+          <Route path="/impact" element={<Impact />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
+        
       </BrowserRouter>
     </>
 

@@ -1,8 +1,8 @@
-// import React from 'react'
+import React from 'react'
 
 function Gallery() {
     return (
-      <div>Galleryyy</div>
+      <div>Gallery</div>
     )
   }
   
