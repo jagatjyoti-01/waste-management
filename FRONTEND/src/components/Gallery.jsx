@@ -2,7 +2,7 @@
 
 function Gallery() {
     return (
-      <div>Gallery</div>
+      <div>Galleryyy</div>
     )
   }
   

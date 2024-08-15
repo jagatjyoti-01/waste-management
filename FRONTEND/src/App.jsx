@@ -1,3 +1,4 @@
+import './index.css';
 import SignIn from "./pages/Signin"
 import SignUp from "./pages/Signup"
 import HomePage from "./pages/HomePage";
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <>
+    
       <BrowserRouter>
         <Routes>
           <Route path="/signin" element={<SignIn />} /> 
