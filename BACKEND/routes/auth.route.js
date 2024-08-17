@@ -1,5 +1,4 @@
 import express from 'express';
-<<<<<<< HEAD
 import { queryController } from '../controllers/query.controller.js';
 
 const router = express.Router(); // This creates the router object
@@ -27,13 +26,6 @@ router.get('/vendor', (req, res, next) => queryController({ ...req, params: { mo
 router.get('/vendor/:id', (req, res, next) => queryController({ ...req, params: { model: 'vendor', action: 'getById', id: req.params.id } }, res, next));
 router.put('/vendor/:id', (req, res, next) => queryController({ ...req, params: { model: 'vendor', action: 'update', id: req.params.id }, body: req.body }, res, next));
 router.delete('/vendor/:id', (req, res, next) => queryController({ ...req, params: { model: 'vendor', action: 'delete', id: req.params.id } }, res, next));
-=======
-import { signup, signin } from '../controllers/auth.controller.js';
 
-const router = express.Router();
-
-router.post('/signup', signup);
-router.post('/signin', signin);
->>>>>>> origin/Sumanta
 
 export default router;
