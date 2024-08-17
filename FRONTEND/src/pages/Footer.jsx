@@ -9,6 +9,7 @@ import { IoMdCall } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-[#111827] text-gray-300 py-6 text-sm ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5   gap-8  px-4 max-w-[1280px] mx-auto md:mx-[95px]">
@@ -22,7 +23,7 @@ function Footer() {
             E-waste wizard is a digital agency for selling electronic waste with good prices and aims to keep the environment clean.
           </p>
           <p className='mt-4'>
-            All Copyright reserved E-Waste-Wizard @2024
+          All Copyright reserved E-Waste-Wizard &copy; {currentYear}
           </p>
         </div>
 
