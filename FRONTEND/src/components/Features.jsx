@@ -57,7 +57,7 @@ const Features = () => {
                             </div>
                         )} */}
               <div
-                className={`overflow-hidden transition-max-height duration-700 ease-in-out ${activeIndex === index ? 'max-h-[1000px]' : 'max-h-0'}`}
+                className={`overflow-hidden transition-max-height duration-500 ease-in-out ${activeIndex === index ? 'max-h-[1000px]' : 'max-h-0'}`}
               >
                 <p className="p-4 text-sm sm:w-full sm:text-2xl border-b-2 sm:font-xs border-green-600 leading-3">
                   {faq.answer}
