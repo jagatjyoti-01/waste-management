@@ -38,7 +38,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex space-x-4">
-          <Link to="/login">
+          <Link to="/signUp">
             <button className="border-2 border-[#1B5844] text-[#1B5844] px-4 py-2 rounded-lg font-semibold hover:bg-[#1B5844] hover:text-white transition duration-300">
               Login
             </button>
