@@ -18,6 +18,7 @@ import FAQ from "./components/FAQ";
 import Footer from "./pages/Footer";
 // import './App.css'
 import { BrowserRouter,Route, Routes } from "react-router-dom"
+import AuthPage from './pages/AuthPage';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element ={<About/>}/>
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/auth" element={<AuthPage/>}/>
 
           <Route path="/navbar" element={<Navbar />} />
           <Route path="/landing" element={<LandingPage />} />
