@@ -38,7 +38,7 @@ const Login = () => {
         <>
             <h2 className="text-2xl font-bold text-center text-green-600 mb-3 mt-20">The Future of E-Waste Management</h2>
             <form onSubmit={formik.handleSubmit}>
-                <div className="mb-4">
+                <div className="mb-4 px-2">
                     <input
                         type="email"
                         name="email"
@@ -53,7 +53,7 @@ const Login = () => {
                     )}
                 </div>
 
-                <div className="mb-4 relative">
+                <div className="mb-4 relative px-2">
                     <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -66,7 +66,7 @@ const Login = () => {
                     <button
                         type="button"
                         onClick={handleClickShowPassword}
-                        className="absolute top-3 right-4 text-gray-600"
+                        className="absolute top-3 right-4 text-gray-600 px-2"
                     >
                         {showPassword ? 'Hide' : 'Show'}
                     </button>
@@ -75,7 +75,7 @@ const Login = () => {
                     )}
                 </div>
 
-                <div className="text-right mb-4">
+                <div className="text-right mb-4 px-2">
                     <button type="button" onClick={handleOnClick} className="text-[#360076] cursor-pointer">
                         Forgot password?
                     </button>
@@ -102,7 +102,7 @@ const Login = () => {
 
                 <button
                     type="submit"
-                    className={`w-full p-3 mt-8 bg-green-600 text-white rounded-lg ${!(formik.isValid && formik.dirty) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`w-full p-3 mt-8 bg-green-600 text-white  rounded-lg  ${!(formik.isValid && formik.dirty) ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={!(formik.isValid && formik.dirty)}
                 >
                     Login

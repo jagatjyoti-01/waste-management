@@ -45,7 +45,7 @@ function SignUp() {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         className={`w-full px-4 py-2 border rounded-lg ${
-                            formik.touched.name && formik.errors.name ? 'border-red-500' : 'border-gray-300'
+                            formik.touched.name && formik.errors.name ? 'border-red-500' : 'border-green-300'
                         }`}
                     />
                     {formik.touched.name && formik.errors.name && (
