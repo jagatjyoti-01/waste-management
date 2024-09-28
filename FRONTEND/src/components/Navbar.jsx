@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="bg-[#E6EAE7]">
       <nav className="bg-[#E6EAE7] md:mx-[110px] py-3 px-4 md:px-1 flex justify-between items-center">
         <div className="flex items-center">
-          <img src={logo} alt="E-waste Logo" className="h-10" />
+          <img src={logo} alt="E-waste Logo" className="h-14 " />
         </div>
 
         <ul className="hidden lg:flex gap-10 space-x-10 text-[#28735A] font-semibold">
@@ -38,7 +38,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex space-x-4">
-          <Link to="/signUp">
+          <Link to="/auth">
             <button className="border-2 border-[#1B5844] text-[#1B5844] px-4 py-2 rounded-lg font-semibold hover:bg-[#1B5844] hover:text-white transition duration-300">
               Login
             </button>

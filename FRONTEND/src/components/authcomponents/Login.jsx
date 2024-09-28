@@ -1,12 +1,32 @@
-import React from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
-import { loginschema } from '../schema/schema';
+import { loginschema } from '../../schema/schema';
+import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        navigate('/reset-email');
+    };
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleClickProfile = () => {
+        setOpenProfile(!openProfile);
+    };
+
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
+            profile: '',
         },
         validationSchema: loginschema,
         onSubmit: (values) => {
@@ -15,48 +35,80 @@ const Login = () => {
     });
 
     return (
-        <div className="w-full max-w-md mx-auto ">
-            <h4 className="text-green-600 font-bold text-xl text-center my-3 md:mb-10">
-                Welcome to E-waste Management
-            </h4>
-            <form onSubmit={formik.handleSubmit} className="space-y-4 ">
-                <div className="relative">
+        <>
+            <h2 className="text-2xl font-bold text-center text-green-600 mb-3 mt-20">The Future of E-Waste Management</h2>
+            <form onSubmit={formik.handleSubmit}>
+                <div className="mb-4 px-2">
                     <input
                         type="email"
                         name="email"
+                        placeholder="Email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
-                        className={`w-full p-3 border rounded-lg ${formik.touched.email && formik.errors.email ? 'border-red-500' : 'border-gray-300'} bg-white`}
-                        placeholder="Email"
+                        onBlur={formik.handleBlur}
+                        className={`w-full p-3 bg-white rounded-lg border ${formik.touched.email && formik.errors.email ? 'border-red-500' : 'border-green-300'} focus:outline-none`}
                     />
                     {formik.touched.email && formik.errors.email && (
-                        <p className="text-red-500 text-sm">{formik.errors.email}</p>
+                        <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
                     )}
                 </div>
-                <div className="relative">
+
+                <div className="mb-4 relative px-2">
                     <input
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         name="password"
+                        placeholder="Password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
-                        className={`w-full p-3 border rounded-lg ${formik.touched.password && formik.errors.password ? 'border-red-500' : 'border-gray-300'} bg-white`}
-                        placeholder="Password"
+                        onBlur={formik.handleBlur}
+                        className={`w-full p-3 bg-white rounded-lg border ${formik.touched.password && formik.errors.password ? 'border-red-500' : 'border-green-300'} focus:outline-none`}
                     />
+                    <button
+                        type="button"
+                        onClick={handleClickShowPassword}
+                        className="absolute top-3 right-4 text-gray-600 px-2"
+                    >
+                        {showPassword ? 'Hide' : 'Show'}
+                    </button>
                     {formik.touched.password && formik.errors.password && (
-                        <p className="text-red-500 text-sm">{formik.errors.password}</p>
+                        <p className="text-red-500 text-sm mt-1">{formik.errors.password}</p>
                     )}
                 </div>
-                <p className="text-right text-[#360076] cursor-pointer mb-4">
-                    Forgot password?
-                </p>
+
+                <div className="text-right mb-4 px-2">
+                    <button type="button" onClick={handleOnClick} className="text-[#360076] cursor-pointer">
+                        Forgot password?
+                    </button>
+                </div>
+
+                {/* <div className="mb-4">
+                    <select
+                        name="profile"
+                        value={formik.values.profile}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`w-full p-3 bg-white rounded-lg border ${formik.touched.profile && formik.errors.profile ? 'border-red-500' : 'border-gray-300'} focus:outline-none`}
+                    >
+                        <option value="" disabled>Select Profile</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="parent">Parent</option>
+                        <option value="investor">Investor</option>
+                    </select>
+                    {formik.touched.profile && formik.errors.profile && (
+                        <p className="text-red-500 text-sm mt-1">{formik.errors.profile}</p>
+                    )}
+                </div> */}
+
                 <button
                     type="submit"
-                    className="w-full bg-[#28735A] text-white py-2 rounded-lg mt-2"
+                    className={`w-full p-3 mt-8 bg-green-600 text-white  rounded-lg  ${!(formik.isValid && formik.dirty) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    disabled={!(formik.isValid && formik.dirty)}
                 >
                     Login
                 </button>
             </form>
-        </div>
+        </>
     );
 };
 

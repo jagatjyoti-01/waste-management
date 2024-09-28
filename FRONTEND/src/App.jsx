@@ -1,5 +1,4 @@
-import SignIn from "./pages/Signin"
-import SignUp from "./pages/Signup"
+
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -17,6 +16,7 @@ import FAQ from "./components/FAQ";
 import Footer from "./pages/Footer";
 import './App.css'
 import { BrowserRouter,Route, Routes } from "react-router-dom"
+import AuthPage from './pages/AuthPage';
 
 function App() {
 
@@ -26,11 +26,11 @@ function App() {
       <BrowserRouter>
       
         <Routes>
-          <Route path="/signin" element={<SignIn />} /> 
-          <Route path="/signup" element={<SignUp />} />
+         
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element ={<About/>}/>
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/auth" element={<AuthPage/>}/>
 
           <Route path="/navbar" element={<Navbar />} />
           <Route path="/landing" element={<LandingPage />} />
