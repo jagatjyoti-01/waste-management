@@ -10,7 +10,7 @@ const AuthPage = () => {
     };
 
     return (
-        <div className="w-full h-100vh flex items-center justify-center ">
+        <div className="w-full h-100vh flex items-center justify-center border">
             <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full ">
                 {/* Left section */}
                 <div className="hidden sm:block relative bg-green-600 bg-cover bg-center px-8 py-16 ">
@@ -33,7 +33,7 @@ const AuthPage = () => {
                     {/* Background shapes */}
                     <img src="/assets/Polygon.png" alt="Polygon" className="absolute top-8 right-8 w-56 h-56" />
                     <img src="/assets/Polygon.png" alt="Polygon" className="absolute top-48 left-36 w-24 h-24" />
-                    <img src="/assets/Ellipse 9.png" alt="Ellipse" className="absolute bottom-22 left-48 w-96 h-64" />
+                    <img src="/assets/Ellipse 9.png" alt="Ellipse" className="absolute bottom-12 left-38 w-22 h-24" />
                     <img src="/assets/Ellipse 9.png" alt="Ellipse" className="absolute bottom-52 left-72 w-24 h-24" />
                     <img src="/assets/Ellipse 9.png" alt="Ellipse" className="absolute bottom-32 left-[650px] w-16 h-16" />
                 </div>
