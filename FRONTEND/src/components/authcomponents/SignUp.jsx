@@ -44,7 +44,7 @@ function SignUp() {
                 Transforming E-Waste into a Sustainable Future
             </h1>
             <p className="text-center text-gray-500 mb-6">
-                Create your account and Recycle waste
+                Create your account and Recycle wastee
             </p>
 
             <form onSubmit={formik.handleSubmit} className="space-y-4">
